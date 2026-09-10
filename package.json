@@ -45,7 +45,7 @@
     "dist"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "packageManager": "pnpm@10.6.3",
   "scripts": {

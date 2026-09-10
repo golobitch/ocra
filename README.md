@@ -9,7 +9,7 @@ Zero-dependency OATH one-time passwords for TypeScript:
 Plus:
 
 - **Zero dependencies.** Built on WebCrypto — nothing to audit but this package.
-- **Runs everywhere.** Node 18+, Deno, Bun, browsers, Cloudflare Workers and other edge runtimes.
+- **Runs everywhere.** Node 20+, Deno, Bun, browsers, Cloudflare Workers and other edge runtimes.
 - **Verified against the RFCs.** Every test vector in RFC 4226 Appendix D, RFC 6238 Appendix B and RFC 6287 Appendix C is in the test suite.
 - **Fully typed**, ESM + CJS, tree-shakeable — importing only TOTP costs about 1.7 KB gzipped.
 
@@ -299,9 +299,17 @@ mistaken for a failed login.
 
 ## Compatibility
 
-Requires a WebCrypto implementation on `globalThis.crypto` — Node 18+, Deno, Bun,
-all current browsers, and edge runtimes such as Cloudflare Workers. On older Node,
-`globalThis.crypto = require("node:crypto").webcrypto` before importing.
+Requires a WebCrypto implementation on `globalThis.crypto` — Node 20+, Deno, Bun,
+all current browsers, and edge runtimes such as Cloudflare Workers.
+
+Node 18 is past end-of-life and does not expose WebCrypto as a global, only as
+`webcrypto` on `node:crypto`. If you are stuck on it, install the global yourself
+before calling into this package (not covered by CI):
+
+```js
+import { webcrypto } from "node:crypto";
+globalThis.crypto = webcrypto;
+```
 
 ## Development
 

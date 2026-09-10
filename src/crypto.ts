@@ -34,7 +34,7 @@ function getCrypto(): Crypto {
   if (!webcrypto?.subtle) {
     throw new TOTPError(
       "CRYPTO_UNAVAILABLE",
-      "globalThis.crypto.subtle is unavailable. This package requires a WebCrypto implementation (Node 18+, Deno, Bun, browsers or edge runtimes).",
+      "globalThis.crypto.subtle is unavailable. This package requires a WebCrypto implementation (Node 20+, Deno, Bun, browsers or edge runtimes).",
     );
   }
   return webcrypto;
