@@ -1,4 +1,4 @@
-# ocra
+# @golobic/ocra
 
 Zero-dependency OATH one-time passwords for TypeScript:
 
@@ -16,17 +16,17 @@ Plus:
 ## Install
 
 ```sh
-pnpm add ocra
+pnpm add @golobic/ocra
 ```
 
 ```sh
-npm install ocra
+npm install @golobic/ocra
 ```
 
 ## Quick start
 
 ```ts
-import { generateSecret, createOTPAuthURI, verifyTOTP } from "ocra";
+import { generateSecret, createOTPAuthURI, verifyTOTP } from "@golobic/ocra";
 
 // 1. Enrolment: create a secret and store it against the user.
 const secret = generateSecret();
@@ -151,7 +151,7 @@ protection, as above.
 The counter-based RFC 4226 mode, for hardware tokens and scratch-code schemes:
 
 ```ts
-import { generateHOTP, verifyHOTPDelta } from "ocra";
+import { generateHOTP, verifyHOTPDelta } from "@golobic/ocra";
 
 const code = await generateHOTP({ secret, counter: 0 });
 
@@ -171,7 +171,7 @@ session data and a timestamp. Which of those are present is declared by an
 **OCRASuite** string such as `OCRA-1:HOTP-SHA256-8:C-QN08-PSHA1`.
 
 ```ts
-import { generateOCRA, verifyOCRA } from "ocra";
+import { generateOCRA, verifyOCRA } from "@golobic/ocra";
 
 // The server sends a challenge; the token computes a response.
 const response = await generateOCRA({
@@ -227,7 +227,7 @@ element is length-checked against the suite individually.
 `P` carries a *hash* of the PIN, never the PIN itself:
 
 ```ts
-import { hashOCRAPassword } from "ocra";
+import { hashOCRAPassword } from "@golobic/ocra";
 
 const passwordHash = await hashOCRAPassword("1234");            // SHA-1 by default
 const sha256Hash = await hashOCRAPassword("1234", "SHA-256");   // for a PSHA256 suite
@@ -239,7 +239,7 @@ The digest must be exactly the length the suite's `PH` names; a mismatch throws
 ### Inspecting a suite
 
 ```ts
-import { parseOCRASuite } from "ocra";
+import { parseOCRASuite } from "@golobic/ocra";
 
 parseOCRASuite("OCRA-1:HOTP-SHA256-8:C-QN08-PSHA1");
 // { value: "OCRA-1:…", version: 1, algorithm: "SHA-256", digits: 8,
@@ -270,7 +270,7 @@ drift handling as TOTP, with `counterWindow` (forward only, default `0`) and
 because secrets arrive in all of these forms:
 
 ```ts
-import { hexDecode, generateTOTP } from "ocra";
+import { hexDecode, generateTOTP } from "@golobic/ocra";
 
 await generateTOTP({ secret: hexDecode("3132333435363738393031323334353637383930") });
 ```

@@ -1,6 +1,6 @@
 {
-  "name": "ocra",
-  "version": "0.1.0",
+  "name": "@golobic/ocra",
+  "version": "1.0.0",
   "description": "Zero-dependency RFC 6238 TOTP, RFC 4226 HOTP and RFC 6287 OCRA for Node, Deno, Bun, browsers and edge runtimes.",
   "keywords": [
     "totp",

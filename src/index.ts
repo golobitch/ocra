@@ -4,7 +4,7 @@
  *
  * @example Enrolling a user
  * ```ts
- * import { generateSecret, createOTPAuthURI } from "ocra";
+ * import { generateSecret, createOTPAuthURI } from "@golobic/ocra";
  *
  * const secret = generateSecret();
  * const uri = createOTPAuthURI({
@@ -16,7 +16,7 @@
  *
  * @example Verifying a submitted code
  * ```ts
- * import { verifyTOTP } from "ocra";
+ * import { verifyTOTP } from "@golobic/ocra";
  *
  * const ok = await verifyTOTP({ secret: storedBase32, token: submitted });
  * ```
